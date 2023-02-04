@@ -27,7 +27,7 @@ namespace bustub {
  */
 class Page {
   // There is book-keeping information inside the page that should only be relevant to the buffer pool manager.
-  friend class BufferPoolManagerInstance;
+  friend class BufferPoolManager;
 
  public:
   /** Constructor. Zeros out the page data. */
@@ -76,10 +76,10 @@ class Page {
 
  private:
   /** Zeroes out the data that is held within the page. */
-  inline void ResetMemory() { memset(data_, OFFSET_PAGE_START, PAGE_SIZE); }
+  inline void ResetMemory() { memset(data_, OFFSET_PAGE_START, BUSTUB_PAGE_SIZE); }
 
   /** The actual data that is stored within a page. */
-  char data_[PAGE_SIZE]{};
+  char data_[BUSTUB_PAGE_SIZE]{};
   /** The ID of this page. */
   page_id_t page_id_ = INVALID_PAGE_ID;
   /** The pin count of this page. */
